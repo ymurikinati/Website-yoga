@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, MeshTransmissionMaterial, OrbitControls, Sparkles, Stars } from '@react-three/drei'
 import * as THREE from 'three'
@@ -651,7 +651,9 @@ export default function App() {
       <section id="hero" className="hero">
         <div className="hero-bg-3d" aria-hidden="true">
           <div className="hero-bg-pane hero-bg-pane--single">
-            <HeroMiniScene type="data" />
+            <Suspense fallback={<div className="glass" style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(22,113,242,0.1), rgba(34,247,200,0.1))' }} />}>
+              <HeroMiniScene type="data" />
+            </Suspense>
           </div>
         </div>
         <div className="hero-body">
